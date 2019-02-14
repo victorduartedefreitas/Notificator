@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Notificatr.Validations
 {
-    public partial class ValidationRule<TEntity>
+    public partial class Validation<TEntity>
         where TEntity : class, INotifiable
     {
         #region Fields
@@ -19,7 +19,7 @@ namespace Notificatr.Validations
 
         #region Constructors
 
-        public ValidationRule(TEntity entity)
+        public Validation(TEntity entity)
         {
             _entity = entity ?? throw new ArgumentNullException(nameof(entity));
             _rules = new List<IRule>();

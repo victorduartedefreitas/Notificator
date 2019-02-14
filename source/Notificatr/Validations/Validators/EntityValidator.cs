@@ -1,15 +1,16 @@
 ﻿using Notificatr.Notifications;
 using System;
 
-namespace Notificatr.Validations
+namespace Notificatr.Validations.Validators
 {
     public abstract class EntityValidator<TEntity>
         where TEntity : class, INotifiable
     {
         #region Fields
 
+        public event EventHandler OnValidated;
         private readonly TEntity Entity;
-        public ValidationRule<TEntity> Rule { get; private set; }
+        public Validation<TEntity> Validation { get; private set; }
 
         #endregion
 
@@ -24,10 +25,10 @@ namespace Notificatr.Validations
 
         #region Protected Methods
 
-        protected ValidationRule<TEntity> CreateRule()
+        protected Validation<TEntity> CreateValidation()
         {
-            Rule = new ValidationRule<TEntity>(Entity);
-            return Rule;
+            Validation = new Validation<TEntity>(Entity);
+            return Validation;
         }
 
         #endregion
@@ -36,9 +37,11 @@ namespace Notificatr.Validations
 
         public void Validate()
         {
-            foreach (var rule in Rule.Rules)
+            foreach (var rule in Validation.Rules)
                 if (!rule.Validate())
                     Entity.AddNotification(new Notification(rule.NotificationKey, rule.NotificationMessage));
+
+            OnValidated?.Invoke(this, EventArgs.Empty);
         }
 
         #endregion

@@ -1,4 +1,4 @@
-﻿using Notificatr.Validations;
+﻿using Notificatr.Validations.Validators;
 
 namespace Notificatr.Tests.Entities
 {
@@ -6,7 +6,7 @@ namespace Notificatr.Tests.Entities
     {
         public CustomerValidator(Customer entity) : base(entity)
         {
-            CreateRule()
+            CreateValidation()
                 .IsNotNullOrEmpty(entity.Address);
         }
     }
