@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Notificatr\Notificatr.csproj" />
+    <ProjectReference Include="..\Notificatr\Notificator.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,10 +1,10 @@
-using Notificatr.Notifications;
-using Notificatr.Tests.Entities;
+using Notificator.Notifications;
+using Notificator.Tests.Entities;
 using System;
 using System.Collections.Generic;
 using Xunit;
 
-namespace Notificatr.Tests
+namespace Notificator.Tests
 {
     public class CoreNotificatrTests
     {

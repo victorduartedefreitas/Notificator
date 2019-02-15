@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Notificatr.Notifications
+namespace Notificator.Notifications
 {
     public abstract class NotifiableEntity : INotifiable
     {

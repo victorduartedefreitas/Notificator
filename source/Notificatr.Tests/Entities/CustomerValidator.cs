@@ -1,6 +1,6 @@
-﻿using Notificatr.Validations.Validators;
+﻿using Notificator.Validations.Validators;
 
-namespace Notificatr.Tests.Entities
+namespace Notificator.Tests.Entities
 {
     public class CustomerValidator : EntityValidator<Customer>
     {

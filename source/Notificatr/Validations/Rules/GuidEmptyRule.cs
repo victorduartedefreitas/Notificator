@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Notificatr.Validations.Rules
+namespace Notificator.Validations.Rules
 {
     internal class GuidEmptyRule : IRule
     {

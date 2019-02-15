@@ -1,4 +1,4 @@
-﻿namespace Notificatr.Tests.Enums
+﻿namespace Notificator.Tests.Enums
 {
     public enum ETransactionType
     {

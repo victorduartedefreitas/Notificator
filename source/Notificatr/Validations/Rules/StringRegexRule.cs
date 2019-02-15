@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Notificatr.Validations.Rules
+namespace Notificator.Validations.Rules
 {
     internal class StringRegexRule : IRule
     {

@@ -1,9 +1,9 @@
-﻿using Notificatr.Notifications;
-using Notificatr.Validations.Rules;
+﻿using Notificator.Notifications;
+using Notificator.Validations.Rules;
 using System;
 using System.Collections.Generic;
 
-namespace Notificatr.Validations
+namespace Notificator.Validations
 {
     //
     //TODO: Mudar a assinatura de todos os métodos do Validation para passar a propriedade num lambdaExpression, ao invés do valor já preenchido.

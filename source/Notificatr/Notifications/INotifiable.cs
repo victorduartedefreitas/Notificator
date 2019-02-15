@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Notificatr.Notifications
+namespace Notificator.Notifications
 {
     public interface INotifiable
     {

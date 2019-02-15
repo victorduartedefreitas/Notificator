@@ -1,7 +1,7 @@
-﻿using Notificatr.Notifications;
+﻿using Notificator.Notifications;
 using System;
 
-namespace Notificatr.Tests.Entities
+namespace Notificator.Tests.Entities
 {
     public class Customer : NotifiableEntity
     {

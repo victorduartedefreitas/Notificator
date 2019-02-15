@@ -1,4 +1,4 @@
-﻿namespace Notificatr.Validations.Rules
+﻿namespace Notificator.Validations.Rules
 {
     /// <summary>
     /// Abstract class that allows you to implement custom rules for entity validations.

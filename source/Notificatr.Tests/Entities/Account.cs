@@ -1,9 +1,9 @@
-﻿using Notificatr.Notifications;
-using Notificatr.Tests.Validators;
+﻿using Notificator.Notifications;
+using Notificator.Tests.Validators;
 using System;
 using System.Collections.Generic;
 
-namespace Notificatr.Tests.Entities
+namespace Notificator.Tests.Entities
 {
     public class Account : NotifiableEntity
     {

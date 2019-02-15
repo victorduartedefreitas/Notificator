@@ -1,6 +1,6 @@
-﻿using Notificatr.Validations.Rules;
+﻿using Notificator.Validations.Rules;
 
-namespace Notificatr.Tests.Validators
+namespace Notificator.Tests.Validators
 {
     public class BalanceGreaterThanZeroCustomRule : CustomRule
     {

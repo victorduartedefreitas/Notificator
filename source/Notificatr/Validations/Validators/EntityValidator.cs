@@ -1,7 +1,7 @@
-﻿using Notificatr.Notifications;
+﻿using Notificator.Notifications;
 using System;
 
-namespace Notificatr.Validations.Validators
+namespace Notificator.Validations.Validators
 {
     public abstract class EntityValidator<TEntity>
         where TEntity : class, INotifiable

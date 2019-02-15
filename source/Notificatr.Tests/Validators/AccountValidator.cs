@@ -1,8 +1,8 @@
 ﻿
-using Notificatr.Tests.Entities;
-using Notificatr.Validations.Validators;
+using Notificator.Tests.Entities;
+using Notificator.Validations.Validators;
 
-namespace Notificatr.Tests.Validators
+namespace Notificator.Tests.Validators
 {
     public class AccountValidator : EntityValidator<Account>
     {

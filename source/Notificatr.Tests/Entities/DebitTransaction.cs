@@ -1,6 +1,6 @@
-﻿using Notificatr.Tests.Enums;
+﻿using Notificator.Tests.Enums;
 
-namespace Notificatr.Tests.Entities
+namespace Notificator.Tests.Entities
 {
     public class DebitTransaction : Transaction
     {

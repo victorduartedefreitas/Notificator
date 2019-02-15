@@ -1,4 +1,4 @@
-﻿namespace Notificatr.Validations.Rules
+﻿namespace Notificator.Validations.Rules
 {
     internal class UInt32GreaterThanOrEqualsRule : IRule
     {

@@ -1,4 +1,4 @@
-﻿namespace Notificatr.Validations.Rules
+﻿namespace Notificator.Validations.Rules
 {
     internal class StringContainsRule : IRule
     {

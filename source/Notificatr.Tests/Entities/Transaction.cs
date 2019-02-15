@@ -1,8 +1,8 @@
-﻿using Notificatr.Notifications;
-using Notificatr.Tests.Enums;
+﻿using Notificator.Notifications;
+using Notificator.Tests.Enums;
 using System;
 
-namespace Notificatr.Tests.Entities
+namespace Notificator.Tests.Entities
 {
     public class Transaction : NotifiableEntity
     {

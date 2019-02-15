@@ -1,9 +1,9 @@
-﻿using Notificatr.Notifications;
-using Notificatr.Validations.Rules;
+﻿using Notificator.Notifications;
+using Notificator.Validations.Rules;
 using System;
 using System.Text.RegularExpressions;
 
-namespace Notificatr.Validations
+namespace Notificator.Validations
 {
     public partial class Validation<TEntity>
         where TEntity : class, INotifiable
