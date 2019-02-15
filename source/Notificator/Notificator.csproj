@@ -2,6 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Victor Duarte de Freitas</Authors>
+    <Description>Notificator is a library that allows you to easily use Notification Pattern</Description>
+    <Copyright>Copyright Victor Duarte de Freitas</Copyright>
+    <PackageLicenseUrl>https://github.com/victorduartedefreitas/Notificator</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/victorduartedefreitas/Notificator</PackageProjectUrl>
+    <PackageTags>Notificator, Design Patterns, Notification, Nofitication Pattern</PackageTags>
+    <NeutralLanguage>en-US</NeutralLanguage>
   </PropertyGroup>
 
 </Project>
