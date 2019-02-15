@@ -11,9 +11,15 @@
         /// <param name="parameters">Parameters for the rule validation</param>
         public CustomRule(object[] parameters, string notificationKey, string notificationMessage)
         {
+            Parameters = parameters;
             NotificationKey = notificationKey;
             NotificationMessage = notificationMessage;
         }
+
+        /// <summary>
+        /// Parameters of custom rule
+        /// </summary>
+        protected object[] Parameters { get; }
 
         /// <summary>
         /// Key od notification
