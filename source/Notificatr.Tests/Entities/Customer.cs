@@ -12,9 +12,9 @@ namespace Notificatr.Tests.Entities
         public string Address { get; set; }
         public string Document { get; set; }
 
-        public override void Validate()
+        protected override void DoValidate()
         {
-            customerValidator.Validate();
+            throw new NotImplementedException();
         }
     }
 }

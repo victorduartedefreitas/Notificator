@@ -1,4 +1,5 @@
 ﻿using Notificatr.Notifications;
+using Notificatr.Tests.Validators;
 using System;
 using System.Collections.Generic;
 
@@ -9,14 +10,24 @@ namespace Notificatr.Tests.Entities
         public Guid AccountId { get; set; }
         public Guid CustomerId { get; set; }
         public IList<Transaction> Transactions { get; set; }
+        public double Balance => GetBalance();
+
+        private AccountValidator _validator;
 
         public Account(Guid customerId)
         {
             Transactions = new List<Transaction>();
             CustomerId = customerId;
+
+            _validator = new AccountValidator(this);
+            _validator.OnValidated += _validator_OnValidated;
         }
 
-        public double GetBalance()
+        private void _validator_OnValidated(object sender, EventArgs e)
+        {
+        }
+
+        private double GetBalance()
         {
             double balance = 0.0d;
 
@@ -31,9 +42,29 @@ namespace Notificatr.Tests.Entities
             return balance;
         }
 
-        public override void Validate()
+        public void Withdraw(double amount)
         {
-            throw new NotImplementedException();
+            Withdraw(new DebitTransaction(amount));
+        }
+
+        public void Withdraw(DebitTransaction transaction)
+        {
+            Transactions.Add(transaction);
+        }
+
+        public void Deposit(double amount)
+        {
+            Deposit(new CreditTransaction(amount));
+        }
+
+        public void Deposit(CreditTransaction transaction)
+        {
+            Transactions.Add(transaction);
+        }
+
+        protected override void DoValidate()
+        {
+            _validator.Validate();
         }
     }
 }
