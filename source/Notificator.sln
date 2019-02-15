@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notificator", "Notificatr\Notificator.csproj", "{D530953F-1682-4D9F-A85B-889125100981}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notificator", "Notificator\Notificator.csproj", "{D530953F-1682-4D9F-A85B-889125100981}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notificator.Tests", "Notificatr.Tests\Notificator.Tests.csproj", "{1949DE07-A14C-450B-BB21-827B781A06B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notificator.Tests", "Notificator.Tests\Notificator.Tests.csproj", "{1949DE07-A14C-450B-BB21-827B781A06B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
