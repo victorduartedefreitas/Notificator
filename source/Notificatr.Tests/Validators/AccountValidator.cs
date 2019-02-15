@@ -8,8 +8,12 @@ namespace Notificatr.Tests.Validators
     {
         public AccountValidator(Account entity) : base(entity)
         {
+        }
+
+        protected override void CreateValidatorInstance()
+        {
             CreateValidation()
-                .IsGreaterThan(entity.Balance, 0, "SaldoNegativo", "O saldo da conta não pode ser negativo");
+                .AddCustomRule<BalanceGreaterThanZeroCustomRule>(new object[] { Entity.Balance }, "BalanceGreaterThanZeroCustomRuleViolation", "Balance must be greater than zero.");
         }
     }
 }

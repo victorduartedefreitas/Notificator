@@ -11,7 +11,6 @@ namespace Notificatr.Tests.Entities
         public Guid CustomerId { get; set; }
         public IList<Transaction> Transactions { get; set; }
         public double Balance => GetBalance();
-
         private AccountValidator _validator;
 
         public Account(Guid customerId)

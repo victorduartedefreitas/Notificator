@@ -6,8 +6,15 @@ namespace Notificatr.Tests.Entities
     {
         public CustomerValidator(Customer entity) : base(entity)
         {
+        }
+
+        protected override void CreateValidatorInstance()
+        {
             CreateValidation()
-                .IsNotNullOrEmpty(entity.Address);
+                .IsNotNullOrEmpty(Entity.Address)
+                .IsNotNullOrWhiteSpace(Entity.FullName)
+                .HasMinLenght(Entity.FullName, 10)
+                .HasMaxLenght(Entity.FullName, 100);
         }
     }
 }

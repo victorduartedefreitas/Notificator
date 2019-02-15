@@ -14,7 +14,7 @@ namespace Notificatr.Tests.Entities
 
         protected override void DoValidate()
         {
-            throw new NotImplementedException();
+            customerValidator.Validate();
         }
     }
 }
