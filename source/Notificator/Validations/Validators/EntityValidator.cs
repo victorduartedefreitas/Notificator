@@ -8,14 +8,29 @@ namespace Notificator.Validations.Validators
     {
         #region Fields
 
+        /// <summary>
+        /// Fires after validation
+        /// </summary>
         public event EventHandler OnValidated;
+
+        /// <summary>
+        /// Entity to validate
+        /// </summary>
         protected readonly TEntity Entity;
+
+        /// <summary>
+        /// Instance of validation with all rules
+        /// </summary>
         public Validation<TEntity> Validation { get; private set; }
 
         #endregion
 
         #region Constructors
 
+        /// <summary>
+        /// Creates an instance of EntityValidator
+        /// </summary>
+        /// <param name="entity"></param>
         protected EntityValidator(TEntity entity)
         {
             Entity = entity ?? throw new ArgumentNullException(nameof(entity));
@@ -25,6 +40,10 @@ namespace Notificator.Validations.Validators
 
         #region Protected Methods
 
+        /// <summary>
+        /// Creates an instance of validation
+        /// </summary>
+        /// <returns></returns>
         protected Validation<TEntity> CreateValidation()
         {
             Validation = new Validation<TEntity>(Entity);
@@ -35,6 +54,9 @@ namespace Notificator.Validations.Validators
 
         #region Public Methods
 
+        /// <summary>
+        /// Execute the validation
+        /// </summary>
         public void Validate()
         {
             CreateValidatorInstance();
@@ -46,6 +68,10 @@ namespace Notificator.Validations.Validators
             OnValidated?.Invoke(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// You should implement this method for create an instance of EntityValidator.
+        /// This method is fired at the beginning of Validate method.
+        /// </summary>
         protected abstract void CreateValidatorInstance();
 
         #endregion

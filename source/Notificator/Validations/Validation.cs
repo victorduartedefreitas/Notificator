@@ -5,10 +5,6 @@ using System.Collections.Generic;
 
 namespace Notificator.Validations
 {
-    //
-    //TODO: Mudar a assinatura de todos os métodos do Validation para passar a propriedade num lambdaExpression, ao invés do valor já preenchido.
-    //
-
     /// <summary>
     /// Class to create the rules of entity validation
     /// </summary>
