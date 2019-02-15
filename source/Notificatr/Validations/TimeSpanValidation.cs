@@ -1,8 +1,6 @@
 ﻿using Notificatr.Notifications;
 using Notificatr.Validations.Rules;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Notificatr.Validations
 {

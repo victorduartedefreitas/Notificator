@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Notificatr.Validations.Rules
+﻿namespace Notificatr.Validations.Rules
 {
     internal class DecimalGreaterThanOrEqualsRule : IRule
     {

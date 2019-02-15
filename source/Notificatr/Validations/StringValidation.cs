@@ -96,7 +96,7 @@ namespace Notificatr.Validations
         /// <param name="notificationKey">Key of notification</param>
         /// <param name="notificationMessage">Message of notification</param>
         /// <returns></returns>
-        public Validation<TEntity> HasExactlyLenght(string value, int lenght, string notificationKey = "HasExactlyLenghtRuleViolation", string notificationMessage = "HasExactlyLenghtRuleViolation")
+        public Validation<TEntity> HasLenght(string value, int lenght, string notificationKey = "HasLenghtRuleViolation", string notificationMessage = "HasLenghtRuleViolation")
         {
             _rules.Add(new StringExactlyLenghtRule(value, lenght, notificationKey, notificationMessage));
             return this;
@@ -155,7 +155,7 @@ namespace Notificatr.Validations
         /// <param name="notificationMessage">Message of notification</param>
         /// <param name="options">A bitwise combination of the enumeration values that provide options for matching</param>
         /// <returns></returns>
-        public Validation<TEntity> RegexIsMatch(string input, string pattern, string notificationKey = "RegexMatchRuleViolation", string notificationMessage = "RegexMatchRuleViolation", RegexOptions options = RegexOptions.IgnoreCase)
+        public Validation<TEntity> IsMatch(string input, string pattern, string notificationKey = "MatchRuleViolation", string notificationMessage = "MatchRuleViolation", RegexOptions options = RegexOptions.IgnoreCase)
         {
             _rules.Add(new StringRegexRule(input, pattern, notificationKey, notificationMessage, options));
             return this;

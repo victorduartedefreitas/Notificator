@@ -9,7 +9,7 @@ namespace Notificatr.Validations.Validators
         #region Fields
 
         public event EventHandler OnValidated;
-        private readonly TEntity Entity;
+        protected readonly TEntity Entity;
         public Validation<TEntity> Validation { get; private set; }
 
         #endregion
@@ -37,12 +37,16 @@ namespace Notificatr.Validations.Validators
 
         public void Validate()
         {
+            CreateValidatorInstance();
+
             foreach (var rule in Validation.Rules)
                 if (!rule.Validate())
                     Entity.AddNotification(new Notification(rule.NotificationKey, rule.NotificationMessage));
 
             OnValidated?.Invoke(this, EventArgs.Empty);
         }
+
+        protected abstract void CreateValidatorInstance();
 
         #endregion
     }

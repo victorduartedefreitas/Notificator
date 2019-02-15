@@ -9,18 +9,20 @@
         /// Constructor of CustomRule
         /// </summary>
         /// <param name="parameters">Parameters for the rule validation</param>
-        public CustomRule(object[] parameters)
+        public CustomRule(object[] parameters, string notificationKey, string notificationMessage)
         {
+            NotificationKey = notificationKey;
+            NotificationMessage = notificationMessage;
         }
 
         /// <summary>
         /// Key od notification
         /// </summary>
-        public abstract string NotificationKey { get; }
+        public string NotificationKey { get; }
         /// <summary>
         /// Message of notification
         /// </summary>
-        public abstract string NotificationMessage { get; }
+        public string NotificationMessage { get; }
 
         /// <summary>
         /// Validate the rule

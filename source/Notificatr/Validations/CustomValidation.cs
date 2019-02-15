@@ -14,10 +14,10 @@ namespace Notificatr.Validations
         /// <typeparam name="TCustomRule">CustomRule implementation class</typeparam>
         /// <param name="parameters">Parameters for CustomRule implementation</param>
         /// <returns></returns>
-        public Validation<TEntity> AddCustomRule<TCustomRule>(object[] parameters)
+        public Validation<TEntity> AddCustomRule<TCustomRule>(object[] parameters, string notificationKey, string notificationMessage)
             where TCustomRule : CustomRule
         {
-            _rules.Add((TCustomRule)Activator.CreateInstance(typeof(TCustomRule), parameters));
+            _rules.Add((TCustomRule)Activator.CreateInstance(typeof(TCustomRule), parameters, notificationKey, notificationMessage));
             return this;
         }
     }
