@@ -11,4 +11,4 @@ Follow this link for package information: https://www.nuget.org/packages/Notific
 
 ## How to use
 You can see an example of use on Notificator-MyWallet project (https://github.com/victorduartedefreitas/Notificator-MyWallet).
-I'll explain the use as soon as I finish the project above.
+I'll explain the use as soon as I finish this example project.
