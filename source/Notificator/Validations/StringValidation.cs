@@ -5,8 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace Notificator.Validations
 {
-    public partial class Validation<TEntity>
-        where TEntity : class, INotifiable
+    public partial class Validation
     {
         /// <summary>
         /// Validate if a string is not null or empty
@@ -15,7 +14,7 @@ namespace Notificator.Validations
         /// <param name="notificationKey">key of notification</param>
         /// <param name="notificationMessage">message of notification</param>
         /// <returns></returns>
-        public Validation<TEntity> IsNotNullOrEmpty(string value, string notificationKey = "IsNotNullOrEmptyRuleViolation", string notificationMessage = "IsNotNullOrEmptyRuleViolation")
+        public Validation IsNotNullOrEmpty(string value, string notificationKey = "IsNotNullOrEmptyRuleViolation", string notificationMessage = "IsNotNullOrEmptyRuleViolation")
         {
             _rules.Add(new StringNullOrEmptyRule(value, false, notificationKey, notificationMessage));
             return this;
@@ -28,7 +27,7 @@ namespace Notificator.Validations
         /// <param name="notificationKey">key of notification</param>
         /// <param name="notificationMessage">message of notification</param>
         /// <returns></returns>
-        public Validation<TEntity> IsNullOrEmpty(string value, string notificationKey = "IsNullOrEmptyRuleViolation", string notificationMessage = "IsNullOrEmptyRuleViolation")
+        public Validation IsNullOrEmpty(string value, string notificationKey = "IsNullOrEmptyRuleViolation", string notificationMessage = "IsNullOrEmptyRuleViolation")
         {
             _rules.Add(new StringNullOrEmptyRule(value, true, notificationKey, notificationMessage));
             return this;
@@ -41,7 +40,7 @@ namespace Notificator.Validations
         /// <param name="notificationKey">key of notification</param>
         /// <param name="notificationMessage">message of notification</param>
         /// <returns></returns>
-        public Validation<TEntity> IsNotNullOrWhiteSpace(string value, string notificationKey = "IsNotNullOrWhiteSpaceRuleViolation", string notificationMessage = "IsNotNullOrWhiteSpaceRuleViolation")
+        public Validation IsNotNullOrWhiteSpace(string value, string notificationKey = "IsNotNullOrWhiteSpaceRuleViolation", string notificationMessage = "IsNotNullOrWhiteSpaceRuleViolation")
         {
             _rules.Add(new StringNotNullOrWhiteSpaceRule(value, false, notificationKey, notificationMessage));
             return this;
@@ -54,7 +53,7 @@ namespace Notificator.Validations
         /// <param name="notificationKey">Key of notification</param>
         /// <param name="notificationMessage">Message of notification</param>
         /// <returns></returns>
-        public Validation<TEntity> IsNullOrWhiteSpace(string value, string notificationKey = "IsNullOrWhiteSpaceRuleViolation", string notificationMessage = "IsNullOrWhiteSpaceRuleViolation")
+        public Validation IsNullOrWhiteSpace(string value, string notificationKey = "IsNullOrWhiteSpaceRuleViolation", string notificationMessage = "IsNullOrWhiteSpaceRuleViolation")
         {
             _rules.Add(new StringNotNullOrWhiteSpaceRule(value, true, notificationKey, notificationMessage));
             return this;
@@ -68,7 +67,7 @@ namespace Notificator.Validations
         /// <param name="notificationKey">Key of notification</param>
         /// <param name="notificationMessage">Message of notification</param>
         /// <returns></returns>
-        public Validation<TEntity> HasMinLenght(string value, int minLenght, string notificationKey = "HasMinLenghtRuleViolation", string notificationMessage = "HasMinLenghtRuleViolation")
+        public Validation HasMinLenght(string value, int minLenght, string notificationKey = "HasMinLenghtRuleViolation", string notificationMessage = "HasMinLenghtRuleViolation")
         {
             _rules.Add(new StringMinLenghtRule(value, minLenght, notificationKey, notificationMessage));
             return this;
@@ -82,7 +81,7 @@ namespace Notificator.Validations
         /// <param name="notificationKey">Key of notification</param>
         /// <param name="notificationMessage">Message of notification</param>
         /// <returns></returns>
-        public Validation<TEntity> HasMaxLenght(string value, int maxLenght, string notificationKey = "HasMaxLenghtRuleViolation", string notificationMessage = "HasMaxLenghtRuleViolation")
+        public Validation HasMaxLenght(string value, int maxLenght, string notificationKey = "HasMaxLenghtRuleViolation", string notificationMessage = "HasMaxLenghtRuleViolation")
         {
             _rules.Add(new StringMaxLenghtRule(value, maxLenght, notificationKey, notificationMessage));
             return this;
@@ -96,7 +95,7 @@ namespace Notificator.Validations
         /// <param name="notificationKey">Key of notification</param>
         /// <param name="notificationMessage">Message of notification</param>
         /// <returns></returns>
-        public Validation<TEntity> HasLenght(string value, int lenght, string notificationKey = "HasLenghtRuleViolation", string notificationMessage = "HasLenghtRuleViolation")
+        public Validation HasLenght(string value, int lenght, string notificationKey = "HasLenghtRuleViolation", string notificationMessage = "HasLenghtRuleViolation")
         {
             _rules.Add(new StringExactlyLenghtRule(value, lenght, notificationKey, notificationMessage));
             return this;
@@ -110,7 +109,7 @@ namespace Notificator.Validations
         /// <param name="notificationKey">Key of notification</param>
         /// <param name="notificationMessage">Message of notification</param>
         /// <returns></returns>
-        public Validation<TEntity> Contains(string value, string contains, string notificationKey = "ContainsRuleViolation", string notificationMessage = "ContainsRuleViolation")
+        public Validation Contains(string value, string contains, string notificationKey = "ContainsRuleViolation", string notificationMessage = "ContainsRuleViolation")
         {
             _rules.Add(new StringContainsRule(value, contains, notificationKey, notificationMessage));
             return this;
@@ -125,7 +124,7 @@ namespace Notificator.Validations
         /// <param name="notificationMessage">Message of notification</param>
         /// <param name="comparison">One of the enumeration values that specifies the rules for the comparison</param>
         /// <returns></returns>
-        public Validation<TEntity> AreEquals(string value, string comparer, string notificationKey = "AreEqualsRuleViolation", string notificationMessage = "AreEqualsRuleViolation", StringComparison comparison = StringComparison.CurrentCultureIgnoreCase)
+        public Validation AreEquals(string value, string comparer, string notificationKey = "AreEqualsRuleViolation", string notificationMessage = "AreEqualsRuleViolation", StringComparison comparison = StringComparison.CurrentCultureIgnoreCase)
         {
             _rules.Add(new StringEqualsRule(value, comparer, true, notificationKey, notificationMessage, comparison));
             return this;
@@ -140,7 +139,7 @@ namespace Notificator.Validations
         /// <param name="notificationMessage">Message of notification</param>
         /// <param name="comparison">One of the enumeration values that specifies the rules for the comparison</param>
         /// <returns></returns>
-        public Validation<TEntity> AreNotEquals(string value, string comparer, string notificationKey = "AreNotEqualsRuleViolation", string notificationMessage = "AreNotEqualsRuleViolation", StringComparison comparison = StringComparison.CurrentCultureIgnoreCase)
+        public Validation AreNotEquals(string value, string comparer, string notificationKey = "AreNotEqualsRuleViolation", string notificationMessage = "AreNotEqualsRuleViolation", StringComparison comparison = StringComparison.CurrentCultureIgnoreCase)
         {
             _rules.Add(new StringEqualsRule(value, comparer, false, notificationKey, notificationMessage, comparison));
             return this;
@@ -155,7 +154,7 @@ namespace Notificator.Validations
         /// <param name="notificationMessage">Message of notification</param>
         /// <param name="options">A bitwise combination of the enumeration values that provide options for matching</param>
         /// <returns></returns>
-        public Validation<TEntity> IsMatch(string input, string pattern, string notificationKey = "MatchRuleViolation", string notificationMessage = "MatchRuleViolation", RegexOptions options = RegexOptions.IgnoreCase)
+        public Validation IsMatch(string input, string pattern, string notificationKey = "MatchRuleViolation", string notificationMessage = "MatchRuleViolation", RegexOptions options = RegexOptions.IgnoreCase)
         {
             _rules.Add(new StringRegexRule(input, pattern, notificationKey, notificationMessage, options));
             return this;

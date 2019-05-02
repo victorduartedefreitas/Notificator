@@ -4,8 +4,7 @@ using System;
 
 namespace Notificator.Validations
 {
-    public partial class Validation<TEntity>
-       where TEntity : class, INotifiable
+    public partial class Validation
     {
         /// <summary>
         /// Validate if the value is greater than other value
@@ -15,7 +14,7 @@ namespace Notificator.Validations
         /// <param name="notificationKey">key of notification</param>
         /// <param name="notificationMessage">message of notification</param>
         /// <returns></returns>
-        public Validation<TEntity> IsGreaterThan(TimeSpan value, TimeSpan compareTo, string notificationKey = "IsGreaterThanRuleViolation", string notificationMessage = "IsGreaterThanRuleViolation")
+        public Validation IsGreaterThan(TimeSpan value, TimeSpan compareTo, string notificationKey = "IsGreaterThanRuleViolation", string notificationMessage = "IsGreaterThanRuleViolation")
         {
             _rules.Add(new TimeSpanGreaterThanOrEqualsRule(value, compareTo, true, false, notificationKey, notificationMessage));
             return this;
@@ -29,7 +28,7 @@ namespace Notificator.Validations
         /// <param name="notificationKey">key of notification</param>
         /// <param name="notificationMessage">message of notification</param>
         /// <returns></returns>
-        public Validation<TEntity> IsGreaterThanOrEquals(TimeSpan value, TimeSpan compareTo, string notificationKey = "IsGreaterThanOrEqualsRuleViolation", string notificationMessage = "IsGreaterThanOrEqualsRuleViolation")
+        public Validation IsGreaterThanOrEquals(TimeSpan value, TimeSpan compareTo, string notificationKey = "IsGreaterThanOrEqualsRuleViolation", string notificationMessage = "IsGreaterThanOrEqualsRuleViolation")
         {
             _rules.Add(new TimeSpanGreaterThanOrEqualsRule(value, compareTo, true, true, notificationKey, notificationMessage));
             return this;
@@ -43,7 +42,7 @@ namespace Notificator.Validations
         /// <param name="notificationKey">key of notification</param>
         /// <param name="notificationMessage">message of notification</param>
         /// <returns></returns>
-        public Validation<TEntity> IsLowerThan(TimeSpan value, TimeSpan compareTo, string notificationKey = "IsLowerThanRuleViolation", string notificationMessage = "IsLowerThanRuleViolation")
+        public Validation IsLowerThan(TimeSpan value, TimeSpan compareTo, string notificationKey = "IsLowerThanRuleViolation", string notificationMessage = "IsLowerThanRuleViolation")
         {
             _rules.Add(new TimeSpanGreaterThanOrEqualsRule(value, compareTo, false, false, notificationKey, notificationMessage));
             return this;
@@ -57,7 +56,7 @@ namespace Notificator.Validations
         /// <param name="notificationKey">key of notification</param>
         /// <param name="notificationMessage">message of notification</param>
         /// <returns></returns>
-        public Validation<TEntity> IsLowerThanOrEquals(TimeSpan value, TimeSpan compareTo, string notificationKey = "IsLowerThanOrEquals", string notificationMessage = "IsLowerThanOrEquals")
+        public Validation IsLowerThanOrEquals(TimeSpan value, TimeSpan compareTo, string notificationKey = "IsLowerThanOrEquals", string notificationMessage = "IsLowerThanOrEquals")
         {
             _rules.Add(new TimeSpanGreaterThanOrEqualsRule(value, compareTo, false, true, notificationKey, notificationMessage));
             return this;
@@ -73,7 +72,7 @@ namespace Notificator.Validations
         /// <param name="notificationKey">key of notification</param>
         /// <param name="notificationMessage">message of notification</param>
         /// <returns></returns>
-        public Validation<TEntity> IsBetween(TimeSpan value, TimeSpan minTimeSpan, TimeSpan maxTimeSpan, bool inclusive, string notificationKey = "IsLowerThanOrEquals", string notificationMessage = "IsLowerThanOrEquals")
+        public Validation IsBetween(TimeSpan value, TimeSpan minTimeSpan, TimeSpan maxTimeSpan, bool inclusive, string notificationKey = "IsLowerThanOrEquals", string notificationMessage = "IsLowerThanOrEquals")
         {
             _rules.Add(new TimeSpanBetweenRule(value, minTimeSpan, maxTimeSpan, inclusive, notificationKey, notificationMessage));
             return this;

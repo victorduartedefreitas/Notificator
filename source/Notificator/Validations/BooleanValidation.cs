@@ -3,8 +3,7 @@ using Notificator.Validations.Rules;
 
 namespace Notificator.Validations
 {
-    public partial class Validation<TEntity>
-        where TEntity : class, INotifiable
+    public partial class Validation
     {
         /// <summary>
         /// Validate if the value is true
@@ -13,7 +12,7 @@ namespace Notificator.Validations
         /// <param name="notificationKey">key of notification</param>
         /// <param name="notificationMessage">message of notification</param>
         /// <returns></returns>
-        public Validation<TEntity> IsTrue(bool value, string notificationKey = "IsTrueRuleViolation", string notificationMessage = "IsTrueRuleViolation")
+        public Validation IsTrue(bool value, string notificationKey = "IsTrueRuleViolation", string notificationMessage = "IsTrueRuleViolation")
         {
             _rules.Add(new BooleanRule(value, true, notificationKey, notificationMessage));
             return this;
@@ -26,7 +25,7 @@ namespace Notificator.Validations
         /// <param name="notificationKey">key of notification</param>
         /// <param name="notificationMessage">message of notification</param>
         /// <returns></returns>
-        public Validation<TEntity> IsFalse(bool value, string notificationKey = "IsFalseRuleViolation", string notificationMessage = "IsFalseRuleViolation")
+        public Validation IsFalse(bool value, string notificationKey = "IsFalseRuleViolation", string notificationMessage = "IsFalseRuleViolation")
         {
             _rules.Add(new BooleanRule(value, false, notificationKey, notificationMessage));
             return this;

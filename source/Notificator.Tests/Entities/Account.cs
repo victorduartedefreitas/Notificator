@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Notificator.Tests.Entities
 {
-    public class Account : NotifiableEntity
+    public class Account : NotifiableEntity, IAccount
     {
         public Guid AccountId { get; set; }
         public Guid CustomerId { get; set; }

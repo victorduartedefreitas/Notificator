@@ -4,8 +4,7 @@ using System;
 
 namespace Notificator.Validations
 {
-    public partial class Validation<TEntity>
-        where TEntity : class, INotifiable
+    public partial class Validation
     {
         /// <summary>
         /// Provide a custom rule for validation.
@@ -14,7 +13,7 @@ namespace Notificator.Validations
         /// <typeparam name="TCustomRule">CustomRule implementation class</typeparam>
         /// <param name="parameters">Parameters for CustomRule implementation</param>
         /// <returns></returns>
-        public Validation<TEntity> AddCustomRule<TCustomRule>(object[] parameters, string notificationKey, string notificationMessage)
+        public Validation AddCustomRule<TCustomRule>(object[] parameters, string notificationKey, string notificationMessage)
             where TCustomRule : CustomRule
         {
             _rules.Add((TCustomRule)Activator.CreateInstance(typeof(TCustomRule), parameters, notificationKey, notificationMessage));

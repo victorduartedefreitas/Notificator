@@ -4,7 +4,7 @@ using System;
 namespace Notificator.Validations.Validators
 {
     public abstract class EntityValidator<TEntity>
-        where TEntity : class, INotifiable
+        where TEntity : INotifiable
     {
         #region Fields
 
@@ -21,7 +21,7 @@ namespace Notificator.Validations.Validators
         /// <summary>
         /// Instance of validation with all rules
         /// </summary>
-        public Validation<TEntity> Validation { get; private set; }
+        public Validation Validation { get; private set; }
 
         #endregion
 
@@ -33,7 +33,7 @@ namespace Notificator.Validations.Validators
         /// <param name="entity"></param>
         protected EntityValidator(TEntity entity)
         {
-            Entity = entity ?? throw new ArgumentNullException(nameof(entity));
+            Entity = entity;
         }
 
         #endregion
@@ -44,9 +44,9 @@ namespace Notificator.Validations.Validators
         /// Creates an instance of validation
         /// </summary>
         /// <returns></returns>
-        protected Validation<TEntity> CreateValidation()
+        protected Validation CreateValidation()
         {
-            Validation = new Validation<TEntity>(Entity);
+            Validation = new Validation();
             return Validation;
         }
 

@@ -1,10 +1,11 @@
-﻿using Notificator.Validations.Validators;
+﻿using Notificator.Tests.Entities;
+using Notificator.Validations.Validators;
 
-namespace Notificator.Tests.Entities
+namespace Notificator.Tests.Validators
 {
-    public class CustomerValidator : EntityValidator<Customer>
+    public class CustomerValidator : EntityValidator<ICustomer>
     {
-        public CustomerValidator(Customer entity) : base(entity)
+        public CustomerValidator(ICustomer entity) : base(entity)
         {
         }
 

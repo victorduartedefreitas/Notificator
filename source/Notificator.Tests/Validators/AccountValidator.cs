@@ -4,9 +4,9 @@ using Notificator.Validations.Validators;
 
 namespace Notificator.Tests.Validators
 {
-    public class AccountValidator : EntityValidator<Account>
+    public class AccountValidator : EntityValidator<IAccount>
     {
-        public AccountValidator(Account entity) : base(entity)
+        public AccountValidator(IAccount entity) : base(entity)
         {
         }
 

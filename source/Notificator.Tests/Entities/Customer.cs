@@ -1,9 +1,10 @@
 ﻿using Notificator.Notifications;
+using Notificator.Tests.Validators;
 using System;
 
 namespace Notificator.Tests.Entities
 {
-    public class Customer : NotifiableEntity
+    public class Customer : NotifiableEntity, ICustomer
     {
         private CustomerValidator customerValidator => new CustomerValidator(this);
 

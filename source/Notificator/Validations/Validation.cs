@@ -1,6 +1,4 @@
-﻿using Notificator.Notifications;
-using Notificator.Validations.Rules;
-using System;
+﻿using Notificator.Validations.Rules;
 using System.Collections.Generic;
 
 namespace Notificator.Validations
@@ -9,12 +7,10 @@ namespace Notificator.Validations
     /// Class to create the rules of entity validation
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public partial class Validation<TEntity>
-        where TEntity : class, INotifiable
+    public partial class Validation
     {
         #region Fields
 
-        private readonly TEntity _entity;
         private List<IRule> _rules;
 
         /// <summary>
@@ -30,9 +26,8 @@ namespace Notificator.Validations
         /// Default constructor of Validation
         /// </summary>
         /// <param name="entity">Entity to validate</param>
-        public Validation(TEntity entity)
+        public Validation()
         {
-            _entity = entity ?? throw new ArgumentNullException(nameof(entity));
             _rules = new List<IRule>();
         }
 
