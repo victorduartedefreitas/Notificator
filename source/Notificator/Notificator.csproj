@@ -7,8 +7,10 @@
     <Copyright>Copyright Victor Duarte de Freitas</Copyright>
     <PackageLicenseUrl>https://github.com/victorduartedefreitas/Notificator</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/victorduartedefreitas/Notificator</PackageProjectUrl>
-    <PackageTags>Notificator, Design Patterns, Notification, Nofitication Pattern</PackageTags>
+    <PackageTags>Notificator, Notification, Notification Pattern</PackageTags>
     <NeutralLanguage>en-US</NeutralLanguage>
+    <Version>1.1.0</Version>
+    <PackageReleaseNotes>Decoupling of EntityValidator with Entity classes. Now you can create interfaces for your entities and reference then on your custom EntityValidator instead of reference directly your entity class.</PackageReleaseNotes>
   </PropertyGroup>
 
 </Project>
