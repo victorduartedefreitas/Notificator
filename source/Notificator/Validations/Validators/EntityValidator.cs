@@ -46,8 +46,18 @@ namespace Notificator.Validations.Validators
         /// <returns></returns>
         protected Validation CreateValidation()
         {
-            Validation = new Validation();
+            if (Validation == null)
+                Validation = new Validation();
+
             return Validation;
+        }
+
+        /// <summary>
+        /// Clear the list of validation rules
+        /// </summary>
+        protected void ClearValidationRules()
+        {
+            Validation?.ClearRules();
         }
 
         #endregion

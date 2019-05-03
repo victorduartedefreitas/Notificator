@@ -32,5 +32,17 @@ namespace Notificator.Validations
         }
 
         #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Clear the list of validation rules
+        /// </summary>
+        public void ClearRules()
+        {
+            _rules?.Clear();
+        }
+
+        #endregion
     }
 }
