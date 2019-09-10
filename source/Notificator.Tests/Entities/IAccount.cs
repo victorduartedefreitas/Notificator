@@ -1,4 +1,4 @@
-﻿using Notificator.Notifications;
+﻿using Notificator.Core;
 using System;
 using System.Collections.Generic;
 

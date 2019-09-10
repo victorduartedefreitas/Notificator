@@ -1,5 +1,4 @@
-﻿using Notificator.Notifications;
-using Notificator.Validations.Rules;
+﻿using Notificator.Validations.Rules;
 
 namespace Notificator.Validations
 {

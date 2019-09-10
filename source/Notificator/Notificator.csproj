@@ -13,4 +13,8 @@
     <PackageReleaseNotes>Decoupling of EntityValidator with Entity classes. Now you can create interfaces for your entities and reference then on your custom EntityValidator instead of reference directly your entity class.</PackageReleaseNotes>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Validations\Validators\" />
+  </ItemGroup>
+
 </Project>

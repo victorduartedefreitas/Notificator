@@ -1,13 +1,23 @@
-﻿using System.Collections.Generic;
+﻿using Notificator.Core;
+using Notificator.Models;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
-namespace Notificator.Notifications
+namespace Notificator
 {
-    public abstract class NotifiableEntity : INotifiable
+    public abstract class NotifiableEntity<INotifiableEntity, IValidator> : INotifiable
+        where INotifiableEntity : INotifiable
+        where IValidator : IEntityValidator<INotifiableEntity>
     {
         #region Fields
 
-        private readonly List<Notification> _notifications;
+        private readonly List<Notification> _notifications = new List<Notification>();
+        private readonly IValidator _validator;
+
+        #endregion
+
+        #region Properties
 
         /// <summary>
         /// All notifications
@@ -22,13 +32,36 @@ namespace Notificator.Notifications
 
         #region Constructors
 
-        /// <summary>
-        /// Create a new instance of NotifiableEntity
-        /// </summary>
         protected NotifiableEntity()
         {
-            _notifications = new List<Notification>();
+            var constructorInfo = typeof(IValidator).GetConstructor(new[] { typeof(INotifiableEntity) });
+            var args = new object[] { this };
+            _validator = (IValidator)constructorInfo.Invoke(args);
+
+            if (_validator != null)
+                _validator.OnValidated += OnValidated;
         }
+
+        #endregion
+
+        #region Protected Methods
+
+        /// <summary>
+        /// Executed when the validation has been done
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected virtual void OnValidated(object sender, EventArgs e) { }
+
+        /// <summary>
+        /// Action before the Validate method
+        /// </summary>
+        protected virtual void BeforeValidate() { }
+
+        /// <summary>
+        /// Action after the Validate method
+        /// </summary>
+        protected virtual void AfterValidate() { }
 
         #endregion
 
@@ -100,27 +133,12 @@ namespace Notificator.Notifications
         }
 
         /// <summary>
-        /// Action before the 'DoValidate' method
-        /// </summary>
-        protected virtual void BeforeValidate() { }
-
-        /// <summary>
-        /// Action after the 'DoValidate' method
-        /// </summary>
-        protected virtual void AfterValidate() { }
-
-        /// <summary>
-        /// Method to validate the entity with the 'entityValidator'
-        /// </summary>
-        protected abstract void DoValidate();
-
-        /// <summary>
         /// Encapsulates the BeforeValidate, DoValidate and AfterValidate methods
         /// </summary>
         public void Validate()
         {
             BeforeValidate();
-            DoValidate();
+            _validator.Validate();
             AfterValidate();
         }
 

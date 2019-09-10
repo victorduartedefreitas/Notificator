@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Notificator.Models;
+using System.Collections.Generic;
 
-namespace Notificator.Notifications
+namespace Notificator.Core
 {
     public interface INotifiable
     {

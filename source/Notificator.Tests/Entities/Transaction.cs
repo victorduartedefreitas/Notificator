@@ -1,10 +1,10 @@
-﻿using Notificator.Notifications;
-using Notificator.Tests.Enums;
+﻿using Notificator.Tests.Enums;
+using Notificator.Tests.Validators;
 using System;
 
 namespace Notificator.Tests.Entities
 {
-    public class Transaction : NotifiableEntity
+    public class Transaction : NotifiableEntity<ITransaction, TransactionValidator>, ITransaction
     {
         public Guid TransactionId { get; set; }
         public ETransactionType TransactionType { get; private set; }
@@ -17,11 +17,6 @@ namespace Notificator.Tests.Entities
         public Transaction(ETransactionType transactionType)
         {
             TransactionType = transactionType;
-        }
-
-        protected override void DoValidate()
-        {
-            throw new NotImplementedException();
         }
     }
 }

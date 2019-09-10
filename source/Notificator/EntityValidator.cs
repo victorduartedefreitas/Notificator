@@ -1,9 +1,11 @@
-﻿using Notificator.Notifications;
+﻿using Notificator.Core;
+using Notificator.Models;
+using Notificator.Validations;
 using System;
 
-namespace Notificator.Validations.Validators
+namespace Notificator
 {
-    public abstract class EntityValidator<TEntity>
+    public abstract class EntityValidator<TEntity> : IEntityValidator<TEntity>
         where TEntity : INotifiable
     {
         #region Fields
@@ -17,6 +19,10 @@ namespace Notificator.Validations.Validators
         /// Entity to validate
         /// </summary>
         protected readonly TEntity Entity;
+
+        #endregion
+
+        #region Properties
 
         /// <summary>
         /// Instance of validation with all rules

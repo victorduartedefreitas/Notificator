@@ -1,4 +1,4 @@
-using Notificator.Notifications;
+using Notificator.Models;
 using Notificator.Tests.Entities;
 using System;
 using System.Collections.Generic;
