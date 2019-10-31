@@ -1,19 +1,23 @@
 ﻿using Notificator.Core;
 using Notificator.Models;
+using Notificator.Validations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Notificator
 {
-    public abstract class NotifiableEntity<INotifiableEntity, IValidator> : INotifiable
-        where INotifiableEntity : INotifiable
-        where IValidator : IEntityValidator<INotifiableEntity>
+    public abstract class NotifiableEntity : INotifiable
     {
+        #region Events
+
+        public event EventHandler OnValidated;
+
+        #endregion
+
         #region Fields
 
-        private readonly List<Notification> _notifications = new List<Notification>();
-        private readonly IValidator _validator;
+        private readonly List<Notification> _validationMessages = new List<Notification>();
 
         #endregion
 
@@ -22,36 +26,20 @@ namespace Notificator
         /// <summary>
         /// All notifications
         /// </summary>
-        public IReadOnlyCollection<Notification> Notifications => _notifications;
+        public IReadOnlyCollection<Notification> ValidationMessages => _validationMessages;
         /// <summary>
         /// Identifies if the entity is valid
         /// </summary>
-        public bool IsValid => !_notifications.Any();
+        public bool IsValid => !_validationMessages.Any();
 
-        #endregion
-
-        #region Constructors
-
-        protected NotifiableEntity()
-        {
-            var constructorInfo = typeof(IValidator).GetConstructor(new[] { typeof(INotifiableEntity) });
-            var args = new object[] { this };
-            _validator = (IValidator)constructorInfo.Invoke(args);
-
-            if (_validator != null)
-                _validator.OnValidated += OnValidated;
-        }
+        /// <summary>
+        /// Instance of validation with all rules
+        /// </summary>
+        public Validation ValidationInstance { get; } = new Validation();
 
         #endregion
 
         #region Protected Methods
-
-        /// <summary>
-        /// Executed when the validation has been done
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected virtual void OnValidated(object sender, EventArgs e) { }
 
         /// <summary>
         /// Action before the Validate method
@@ -62,6 +50,16 @@ namespace Notificator
         /// Action after the Validate method
         /// </summary>
         protected virtual void AfterValidate() { }
+
+        /// <summary>
+        /// Clear the list of validation rules
+        /// </summary>
+        protected void ClearValidationRules()
+        {
+            ValidationInstance?.ClearRules();
+        }
+
+        protected abstract void CreateValidationRules();
 
         #endregion
 
@@ -74,7 +72,7 @@ namespace Notificator
         /// <param name="message">notification message</param>
         public void AddNotification(string key, string message)
         {
-            _notifications.Add(new Notification(key, message));
+            _validationMessages.Add(new Notification(key, message));
         }
 
         /// <summary>
@@ -83,7 +81,7 @@ namespace Notificator
         /// <param name="notification">notification</param>
         public void AddNotification(Notification notification)
         {
-            _notifications.Add(notification);
+            _validationMessages.Add(notification);
         }
 
         /// <summary>
@@ -92,7 +90,7 @@ namespace Notificator
         /// <param name="notifications">collection of notifications</param>
         public void AddNotifications(IList<Notification> notifications)
         {
-            _notifications.AddRange(notifications);
+            _validationMessages.AddRange(notifications);
         }
 
         /// <summary>
@@ -101,7 +99,7 @@ namespace Notificator
         /// <param name="notifications">collection of notifications</param>
         public void AddNotifications(ICollection<Notification> notifications)
         {
-            _notifications.AddRange(notifications);
+            _validationMessages.AddRange(notifications);
         }
 
         /// <summary>
@@ -110,7 +108,7 @@ namespace Notificator
         /// <param name="notifications">collection of notifications</param>
         public void AddNotifications(IReadOnlyCollection<Notification> notifications)
         {
-            _notifications.AddRange(notifications);
+            _validationMessages.AddRange(notifications);
         }
 
         /// <summary>
@@ -119,7 +117,7 @@ namespace Notificator
         /// <param name="notifiableItem">notifiable item</param>
         public void AddNotifications(INotifiable notifiableItem)
         {
-            _notifications.AddRange(notifiableItem.Notifications);
+            _validationMessages.AddRange(notifiableItem.ValidationMessages);
         }
 
         /// <summary>
@@ -129,7 +127,7 @@ namespace Notificator
         public void AddNotifications(params INotifiable[] notifiableItems)
         {
             foreach (var item in notifiableItems)
-                _notifications.AddRange(item.Notifications);
+                _validationMessages.AddRange(item.ValidationMessages);
         }
 
         /// <summary>
@@ -138,8 +136,28 @@ namespace Notificator
         public void Validate()
         {
             BeforeValidate();
-            _validator.Validate();
+            InternalValidate();
             AfterValidate();
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private void InternalValidate()
+        {
+            if (ValidationInstance == null)
+                return;
+
+            _validationMessages.Clear();
+            ClearValidationRules();
+            CreateValidationRules();
+
+            foreach (var rule in ValidationInstance.Rules)
+                if (!rule.Validate())
+                    AddNotification(new Notification(rule.NotificationKey, rule.NotificationMessage));
+
+            OnValidated?.Invoke(this, EventArgs.Empty);
         }
 
         #endregion

@@ -19,12 +19,11 @@ namespace Notificator.Tests
             account.Withdraw(3000);
 
             var balance = account.Balance;
-
             account.Validate();
 
             bool isValid = account.IsValid;
             var notifications = new List<Notification>();
-            notifications.AddRange(account.Notifications);
+            notifications.AddRange(account.ValidationMessages);
 
             Assert.False(isValid);
             Assert.True(notifications.Count == 1);
@@ -43,10 +42,10 @@ namespace Notificator.Tests
             };
 
             customer.Validate();
-            var notifications = new List<Notification>(customer.Notifications);
+            var notifications = new List<Notification>(customer.ValidationMessages);
 
             Assert.False(customer.IsValid);
-            Assert.Contains(customer.Notifications, f => f.Key == "HasMinLenghtRuleViolation");
+            Assert.Contains(customer.ValidationMessages, f => f.Key == "HasMinLenghtRuleViolation");
         }
 
         [Fact]

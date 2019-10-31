@@ -1,4 +1,5 @@
 ﻿using Notificator.Models;
+using System;
 using System.Collections.Generic;
 
 namespace Notificator.Core
@@ -7,10 +8,11 @@ namespace Notificator.Core
     {
         #region Properties
 
+        event EventHandler OnValidated;
         /// <summary>
         /// All notifications
         /// </summary>
-        IReadOnlyCollection<Notification> Notifications { get; }
+        IReadOnlyCollection<Notification> ValidationMessages { get; }
         /// <summary>
         /// Identifies if the entity is valid
         /// </summary>

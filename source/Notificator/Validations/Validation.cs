@@ -1,5 +1,8 @@
 ﻿using Notificator.Validations.Rules;
+using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
+using System.Reflection;
 
 namespace Notificator.Validations
 {
@@ -41,6 +44,36 @@ namespace Notificator.Validations
         public void ClearRules()
         {
             _rules?.Clear();
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        public T CompilePropertyValue<T>(Expression<Func<T>> expression)
+        {
+            PropertyInfo propertyInfo;
+
+            if (expression.Body is UnaryExpression)
+            {
+                propertyInfo = ((MemberExpression)((UnaryExpression)expression.Body).Operand).Member as PropertyInfo;
+            }
+            else
+            {
+                propertyInfo = ((MemberExpression)expression.Body).Member as PropertyInfo;
+            }
+
+            if (propertyInfo == null)
+            {
+                throw new ArgumentException("The lambda expression 'property' should point to a valid Property");
+            }
+
+            //string parentClassName = ((MemberInfo)propertyInfo).DeclaringType.Name;
+            //string propertyName = propertyInfo.Name;
+            //string propertyType = propertyInfo.GetMethod.ReturnType.Name; //string, int, double
+
+            T propertyValue = expression.Compile()();
+            return propertyValue;
         }
 
         #endregion
