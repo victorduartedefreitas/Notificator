@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AF55B804-0F6E-44B5-96D4-AC8954CC56E9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Notificator.NetFramework45</RootNamespace>
+    <AssemblyName>Notificator.NetFramework45</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\INotifiable.cs" />
+    <Compile Include="Models\Notification.cs" />
+    <Compile Include="NotifiableEntity.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validations\BooleanValidation.cs" />
+    <Compile Include="Validations\CustomValidation.cs" />
+    <Compile Include="Validations\DateTimeValidation.cs" />
+    <Compile Include="Validations\GuidValidation.cs" />
+    <Compile Include="Validations\NumericValidation.cs" />
+    <Compile Include="Validations\ObjectValidation.cs" />
+    <Compile Include="Validations\Rules\BooleanRule.cs" />
+    <Compile Include="Validations\Rules\ByteEqualsRule.cs" />
+    <Compile Include="Validations\Rules\ByteGreaterThanOrEqualsRule.cs" />
+    <Compile Include="Validations\Rules\CustomRule.cs" />
+    <Compile Include="Validations\Rules\DateTimeBetweenRule.cs" />
+    <Compile Include="Validations\Rules\DateTimeGreaterThanOrEqualsRule.cs" />
+    <Compile Include="Validations\Rules\DateTimeNullableRule.cs" />
+    <Compile Include="Validations\Rules\DecimalEqualsRule.cs" />
+    <Compile Include="Validations\Rules\DecimalGreaterThanOrEqualsRule.cs" />
+    <Compile Include="Validations\Rules\DoubleEqualsRule.cs" />
+    <Compile Include="Validations\Rules\DoubleGreaterThanOrEqualsRule.cs" />
+    <Compile Include="Validations\Rules\EqualsRule.cs" />
+    <Compile Include="Validations\Rules\FloatEqualsRule.cs" />
+    <Compile Include="Validations\Rules\FloatGreaterThanOrEqualsRule.cs" />
+    <Compile Include="Validations\Rules\GuidEmptyRule.cs" />
+    <Compile Include="Validations\Rules\Int16EqualsRule.cs" />
+    <Compile Include="Validations\Rules\Int16GreaterThanOrEqualsRule.cs" />
+    <Compile Include="Validations\Rules\Int32EqualsRule.cs" />
+    <Compile Include="Validations\Rules\Int32GreaterThanOrEqualsRule.cs" />
+    <Compile Include="Validations\Rules\Int64EqualsRule.cs" />
+    <Compile Include="Validations\Rules\Int64GreaterThanOrEqualsRule.cs" />
+    <Compile Include="Validations\Rules\IRule.cs" />
+    <Compile Include="Validations\Rules\NullableRule.cs" />
+    <Compile Include="Validations\Rules\StringContainsRule.cs" />
+    <Compile Include="Validations\Rules\StringEqualsRule.cs" />
+    <Compile Include="Validations\Rules\StringExactlyLenghtRule.cs" />
+    <Compile Include="Validations\Rules\StringMaxLenghtRule.cs" />
+    <Compile Include="Validations\Rules\StringMinLenghtRule.cs" />
+    <Compile Include="Validations\Rules\StringNotNullOrWhiteSpaceRule.cs" />
+    <Compile Include="Validations\Rules\StringNullOrEmptyRule.cs" />
+    <Compile Include="Validations\Rules\StringRegexRule.cs" />
+    <Compile Include="Validations\Rules\TimeSpanBetweenRule.cs" />
+    <Compile Include="Validations\Rules\TimeSpanGreaterThanOrEqualsRule.cs" />
+    <Compile Include="Validations\Rules\UInt16EqualsRule.cs" />
+    <Compile Include="Validations\Rules\UInt16GreaterThanOrEqualsRule.cs" />
+    <Compile Include="Validations\Rules\UInt32EqualsRule.cs" />
+    <Compile Include="Validations\Rules\UInt32GreaterThanOrEqualsRule.cs" />
+    <Compile Include="Validations\Rules\UInt64EqualsRule.cs" />
+    <Compile Include="Validations\Rules\UInt64GreaterThanOrEqualsRule.cs" />
+    <Compile Include="Validations\StringValidation.cs" />
+    <Compile Include="Validations\TimeSpanValidation.cs" />
+    <Compile Include="Validations\Validation.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
