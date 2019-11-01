@@ -35,7 +35,7 @@ namespace Notificator
         /// <summary>
         /// Instance of validation with all rules
         /// </summary>
-        public Validation ValidationInstance { get; } = new Validation();
+        private Validation ValidationInstance { get; set; }
 
         #endregion
 
@@ -60,6 +60,12 @@ namespace Notificator
         }
 
         protected abstract void CreateValidationRules();
+
+        protected Validation StartValidationRules()
+        {
+            ValidationInstance = new Validation();
+            return ValidationInstance;
+        }
 
         #endregion
 
@@ -146,12 +152,10 @@ namespace Notificator
 
         private void InternalValidate()
         {
-            if (ValidationInstance == null)
-                return;
-
-            _validationMessages.Clear();
-            ClearValidationRules();
             CreateValidationRules();
+
+            if (ValidationInstance == null)
+                throw new InvalidOperationException("Validation instance not found. Please, check your implementation of CreateValidationRules method. This method must call the StartValidationRules() method to create a valid ValidationInstance, then create your rules.");
 
             foreach (var rule in ValidationInstance.Rules)
                 if (!rule.Validate())

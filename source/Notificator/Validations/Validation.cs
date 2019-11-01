@@ -50,7 +50,7 @@ namespace Notificator.Validations
 
         #region Private Methods
 
-        public T CompilePropertyValue<T>(Expression<Func<T>> expression)
+        private T CompilePropertyValue<T>(Expression<Func<T>> expression)
         {
             PropertyInfo propertyInfo;
 

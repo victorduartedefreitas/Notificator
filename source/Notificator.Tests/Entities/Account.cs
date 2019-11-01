@@ -55,8 +55,9 @@ namespace Notificator.Tests.Entities
 
         protected override void CreateValidationRules()
         {
-            ValidationInstance
-                .IsTrue(() =>  IsTrueForValidation);
+            StartValidationRules()
+                .IsTrue(() => IsTrueForValidation)
+                .IsGreaterThan(() => Balance, 0);
         }
     }
 }
